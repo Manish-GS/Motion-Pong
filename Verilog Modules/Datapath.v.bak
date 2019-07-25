@@ -295,21 +295,24 @@ module Datapath(clock,
         if(resetn == 1'b0)
             P1_Position <= 10'd0;
         else if((P1_move == 1'b1) & (P1_Position < (sensor_1 - 2'd2) * 7) & (sensor_1 < 5'd18))
-            if((sensor_1 - 2'd2) * 7 - P1_Position > 50)
-                    P1_Position <= P1_Position + 5'd10;
-            else if((sensor_1 - 2'd2) * 7 - P1_Position > 3'd5)
-                    P1_Position <= P1_Position + 2'd2;
-                else
-                    P1_Position <= P1_Position + 1'b1;
+        # Move
+        if((sensor_1 - 2'd2) * 7 - P1_Position > 100)
+                P1_Position <= P1_Position + 5'd10;
+        else if((sensor_1 - 2'd2) * 7 - P1_Position > 3'd5)
+                P1_Position <= P1_Position + 2'd2;
+            else
+                P1_Position <= P1_Position + 1'b1;
         
         else if((P1_move == 1'b1) & (P1_Position > (sensor_1 - 2'd2) * 7) & (sensor_1 < 5'd18))
-            if(P1_Position - (sensor_1 - 2'd2) * 7 > 50)
-                P1_Position <= P1_Position - 4'd8;
-            else if(P1_Position - (sensor_1 - 2'd2) * 7 > 3'd5)
-                P1_Position <= P1_Position - 2'd2;
+            // if(P1_Position - (sensor_1 - 2'd2) * 7 > 50)
+            //     P1_Position <= P1_Position - 4'd8;
+            // else 
+            if(P1_Position - (sensor_1 - 2'd2) * 7 > 3'd5)
+                P1_Position <= (sensor_1 - 2'd2) * 4'd7;
+                //P1_Position <= P1_Position - 2'd2;
             else
                 P1_Position <= P1_Position - 1'b1;
-    end     
+    end    
 
 
 // ---------- END PADDLE COUNTERS ---------- //
@@ -340,18 +343,22 @@ module Datapath(clock,
         if(resetn == 1'b0)
             P2_Position <= 10'd0;
         else if((P2_move == 1'b1) & (P2_Position < (sensor_2 - 2) * 7) & (sensor_2 < 5'd18))
-            if((sensor_2 - 2) * 7 - P2_Position > 50)
-                P2_Position <= P2_Position + 4'd8;
-            else if((sensor_2 - 2) * 7 - P2_Position > 3'd5)
-                P2_Position <= P2_Position + 2'd2;
+            // if((sensor_2 - 2) * 7 - P2_Position > 50)
+            //     P2_Position <= P2_Position + 4'd8;
+            // else 
+            if((sensor_2 - 2) * 7 - P2_Position > 3'd5)
+                //P2_Position <= P2_Position + 2'd2;
+                P2_Position <= (sensor_2 - 2'd2) * 4'd7;
             else
                 P2_Position <= P2_Position + 1'b1;
         
         else if((P2_move == 1'b1) & (P2_Position > (sensor_2 - 2) * 7) & (sensor_2 < 5'd18))
-            if(P2_Position - (sensor_2 - 2) * 7 > 50)
-                P2_Position <= P2_Position - 4'd8;
-            else if(P2_Position - (sensor_2 - 2) * 7 > 3'd5)
-                P2_Position <= P2_Position - 2'd2;
+            // if(P2_Position - (sensor_2 - 2) * 7 > 50)
+            //     P2_Position <= P2_Position - 4'd8;
+            // else 
+            if(P2_Position - (sensor_2 - 2) * 7 > 3'd5)
+                //P2_Position <= P2_Position - 2'd2;
+                P2_Position <= (sensor_2 - 2'd2) * 4'd7;
             else
                 P2_Position <= P2_Position - 1'b1;
     end    

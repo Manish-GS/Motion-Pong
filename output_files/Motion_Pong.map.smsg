@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at Motion_Pong.v(105): always construct contains both blocking and non-blocking assignments File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 105
