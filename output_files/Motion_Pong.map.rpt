@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Motion_Pong
-Wed Jul 24 20:26:49 2019
+Fri Jul 26 02:52:49 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -31,15 +31,10 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
  23. altpll Parameter Settings by Entity Instance
  24. Port Connectivity Checks: "UltrasonicSensor:mySensor|usensor:myPercolatingSensorTWOO"
  25. Port Connectivity Checks: "UltrasonicSensor:mySensor|usensor:myPercolatingSensor"
- 26. Port Connectivity Checks: "Datapath:datapath0|Hex_display:player2ScorePart2"
- 27. Port Connectivity Checks: "Datapath:datapath0|Hex_display:player2ScorePart1"
- 28. Port Connectivity Checks: "Datapath:datapath0|Hex_display:player1ScorePart2"
- 29. Port Connectivity Checks: "Datapath:datapath0|Hex_display:player1ScorePart1"
- 30. Port Connectivity Checks: "Datapath:datapath0"
- 31. Post-Synthesis Netlist Statistics for Top Partition
- 32. Elapsed Time Per Partition
- 33. Analysis & Synthesis Messages
- 34. Analysis & Synthesis Suppressed Messages
+ 26. Port Connectivity Checks: "Datapath:datapath0"
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
 
 
 
@@ -65,15 +60,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Jul 24 20:26:49 2019       ;
+; Analysis & Synthesis Status        ; Successful - Fri Jul 26 02:52:49 2019       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; Motion_Pong                                 ;
 ; Top-level Entity Name              ; Motion_Pong                                 ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 2,153                                       ;
-;     Total combinational functions  ; 2,145                                       ;
-;     Dedicated logic registers      ; 373                                         ;
-; Total registers                    ; 373                                         ;
+; Total logic elements               ; 2,225                                       ;
+;     Total combinational functions  ; 2,216                                       ;
+;     Dedicated logic registers      ; 383                                         ;
+; Total registers                    ; 383                                         ;
 ; Total pins                         ; 136                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 57,600                                      ;
@@ -181,7 +176,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.2%      ;
+;     Processor 2            ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -232,20 +227,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 2,153          ;
+; Estimated Total logic elements              ; 2,225          ;
 ;                                             ;                ;
-; Total combinational functions               ; 2145           ;
+; Total combinational functions               ; 2216           ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 521            ;
-;     -- 3 input functions                    ; 622            ;
-;     -- <=2 input functions                  ; 1002           ;
+;     -- 4 input functions                    ; 590            ;
+;     -- 3 input functions                    ; 604            ;
+;     -- <=2 input functions                  ; 1022           ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 1181           ;
-;     -- arithmetic mode                      ; 964            ;
+;     -- normal mode                          ; 1254           ;
+;     -- arithmetic mode                      ; 962            ;
 ;                                             ;                ;
-; Total registers                             ; 373            ;
-;     -- Dedicated logic registers            ; 373            ;
+; Total registers                             ; 383            ;
+;     -- Dedicated logic registers            ; 383            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 136            ;
@@ -257,9 +252,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 353            ;
-; Total fan-out                               ; 7518           ;
-; Average fan-out                             ; 2.65           ;
+; Maximum fan-out                             ; 363            ;
+; Total fan-out                               ; 7789           ;
+; Average fan-out                             ; 2.67           ;
 +---------------------------------------------+----------------+
 
 
@@ -268,9 +263,9 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
 ; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                    ; Entity Name            ; Library Name ;
 +---------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; |Motion_Pong                                            ; 2145 (11)           ; 373 (10)                  ; 57600       ; 0            ; 0       ; 0         ; 136  ; 0            ; |Motion_Pong                                                                                                                                                           ; Motion_Pong            ; work         ;
-;    |Control:control0|                                   ; 22 (22)             ; 18 (18)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Motion_Pong|Control:control0                                                                                                                                          ; Control                ; work         ;
-;    |Datapath:datapath0|                                 ; 745 (717)           ; 115 (115)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Motion_Pong|Datapath:datapath0                                                                                                                                        ; Datapath               ; work         ;
+; |Motion_Pong                                            ; 2216 (11)           ; 383 (13)                  ; 57600       ; 0            ; 0       ; 0         ; 136  ; 0            ; |Motion_Pong                                                                                                                                                           ; Motion_Pong            ; work         ;
+;    |Control:control0|                                   ; 33 (33)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Motion_Pong|Control:control0                                                                                                                                          ; Control                ; work         ;
+;    |Datapath:datapath0|                                 ; 805 (777)           ; 115 (115)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Motion_Pong|Datapath:datapath0                                                                                                                                        ; Datapath               ; work         ;
 ;       |Hex_display:player1ScorePart1|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Motion_Pong|Datapath:datapath0|Hex_display:player1ScorePart1                                                                                                          ; Hex_display            ; work         ;
 ;       |Hex_display:player1ScorePart2|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Motion_Pong|Datapath:datapath0|Hex_display:player1ScorePart2                                                                                                          ; Hex_display            ; work         ;
 ;       |Hex_display:player2ScorePart1|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Motion_Pong|Datapath:datapath0|Hex_display:player2ScorePart1                                                                                                          ; Hex_display            ; work         ;
@@ -311,30 +306,37 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |Motion_Pong|Control:control0|current_state                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
-+-------------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+----------------------+------------------------+-----------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+
-; Name                                ; current_state.S_DELETE_PADDLE2 ; current_state.S_DELETE_WAIT_PADDLE2 ; current_state.S_PLOT_PADDLE2 ; current_state.S_PLOT_WAIT_PADDLE2 ; current_state.S_DELETE_PADDLE1 ; current_state.S_DELETE_WAIT_PADDLE1 ; current_state.S_PLOT_PADDLE1 ; current_state.S_PLOT_WAIT_PADDLE1 ; current_state.S_DONE ; current_state.S_DELETE ; current_state.S_DELETE_WAIT ; current_state.S_WAIT ; current_state.S_WAIT_WAIT ; current_state.S_PLOT ; current_state.S_PLOT_WAIT ; current_state.S_LOAD ; current_state.S_LOAD_WAIT ; current_state.S_INIT ;
-+-------------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+----------------------+------------------------+-----------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+
-; current_state.S_INIT                ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ;
-; current_state.S_LOAD_WAIT           ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 1                         ; 1                    ;
-; current_state.S_LOAD                ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ; 0                         ; 1                    ;
-; current_state.S_PLOT_WAIT           ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 1                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_PLOT                ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 1                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_WAIT_WAIT           ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 1                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_WAIT                ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 1                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_DELETE_WAIT         ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 1                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_DELETE              ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 1                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_DONE                ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 1                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_PLOT_WAIT_PADDLE1   ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 1                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_PLOT_PADDLE1        ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 1                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_DELETE_WAIT_PADDLE1 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 1                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_DELETE_PADDLE1      ; 0                              ; 0                                   ; 0                            ; 0                                 ; 1                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_PLOT_WAIT_PADDLE2   ; 0                              ; 0                                   ; 0                            ; 1                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_PLOT_PADDLE2        ; 0                              ; 0                                   ; 1                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_DELETE_WAIT_PADDLE2 ; 0                              ; 1                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-; current_state.S_DELETE_PADDLE2      ; 1                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
-+-------------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+----------------------+------------------------+-----------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Motion_Pong|Control:control0|current_state                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
++--------------------------------------+------------------------------+---------------------------------+--------------------------------------+------------------------------+-----------------------------------+---------------------------------+--------------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+----------------------+------------------------+-----------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+
+; Name                                 ; current_state.S_DISPLAY_DONE ; current_state.S_DISPLAY_PADDLE2 ; current_state.S_DISPLAY_WAIT_PADDLE2 ; current_state.S_DISPLAY_BALL ; current_state.S_DISPLAY_WAIT_BALL ; current_state.S_DISPLAY_PADDLE1 ; current_state.S_DISPLAY_WAIT_PADDLE1 ; current_state.S_DELETE_PADDLE2 ; current_state.S_DELETE_WAIT_PADDLE2 ; current_state.S_PLOT_PADDLE2 ; current_state.S_PLOT_WAIT_PADDLE2 ; current_state.S_DELETE_PADDLE1 ; current_state.S_DELETE_WAIT_PADDLE1 ; current_state.S_PLOT_PADDLE1 ; current_state.S_PLOT_WAIT_PADDLE1 ; current_state.S_DONE ; current_state.S_DELETE ; current_state.S_DELETE_WAIT ; current_state.S_WAIT ; current_state.S_WAIT_WAIT ; current_state.S_PLOT ; current_state.S_PLOT_WAIT ; current_state.S_LOAD ; current_state.S_LOAD_WAIT ; current_state.S_INIT ;
++--------------------------------------+------------------------------+---------------------------------+--------------------------------------+------------------------------+-----------------------------------+---------------------------------+--------------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+----------------------+------------------------+-----------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+
+; current_state.S_INIT                 ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ;
+; current_state.S_LOAD_WAIT            ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 1                         ; 1                    ;
+; current_state.S_LOAD                 ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ; 0                         ; 1                    ;
+; current_state.S_PLOT_WAIT            ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 1                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_PLOT                 ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 1                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_WAIT_WAIT            ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 1                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_WAIT                 ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 1                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DELETE_WAIT          ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 1                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DELETE               ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 1                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DONE                 ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 1                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_PLOT_WAIT_PADDLE1    ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 1                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_PLOT_PADDLE1         ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 1                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DELETE_WAIT_PADDLE1  ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 1                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DELETE_PADDLE1       ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 1                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_PLOT_WAIT_PADDLE2    ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 1                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_PLOT_PADDLE2         ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 1                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DELETE_WAIT_PADDLE2  ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 1                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DELETE_PADDLE2       ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 1                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DISPLAY_WAIT_PADDLE1 ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 1                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DISPLAY_PADDLE1      ; 0                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 1                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DISPLAY_WAIT_BALL    ; 0                            ; 0                               ; 0                                    ; 0                            ; 1                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DISPLAY_BALL         ; 0                            ; 0                               ; 0                                    ; 1                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DISPLAY_WAIT_PADDLE2 ; 0                            ; 0                               ; 1                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DISPLAY_PADDLE2      ; 0                            ; 1                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
+; current_state.S_DISPLAY_DONE         ; 1                            ; 0                               ; 0                                    ; 0                            ; 0                                 ; 0                               ; 0                                    ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                              ; 0                                   ; 0                            ; 0                                 ; 0                    ; 0                      ; 0                           ; 0                    ; 0                         ; 0                    ; 0                         ; 0                    ; 0                         ; 1                    ;
++--------------------------------------+------------------------------+---------------------------------+--------------------------------------+------------------------------+-----------------------------------+---------------------------------+--------------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+--------------------------------+-------------------------------------+------------------------------+-----------------------------------+----------------------+------------------------+-----------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+---------------------------+----------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------+
@@ -344,34 +346,33 @@ Encoding Type:  One-Hot
 +---------------------------------------------------------------------------------+------------------------------------------+
 ; UltrasonicSensor:mySensor|usensor:myPercolatingSensorTWOO|temp_distance[10..25] ; Lost fanout                              ;
 ; UltrasonicSensor:mySensor|usensor:myPercolatingSensor|temp_distance[10..25]     ; Lost fanout                              ;
-; gameSpeed[23..27]                                                               ; Merged with gameSpeed[22]                ;
-; gameSpeed[21]                                                                   ; Merged with gameSpeed[16]                ;
-; gameSpeed[6,20]                                                                 ; Merged with gameSpeed[1]                 ;
-; gameSpeed[2,5]                                                                  ; Merged with gameSpeed[19]                ;
-; gameSpeed[4]                                                                    ; Merged with gameSpeed[18]                ;
-; gameSpeed[15]                                                                   ; Merged with gameSpeed[10]                ;
-; gameSpeed[8,9]                                                                  ; Merged with gameSpeed[12]                ;
-; gameSpeed[7]                                                                    ; Merged with gameSpeed[11]                ;
-; gameSpeed[3]                                                                    ; Merged with gameSpeed[0]                 ;
-; Datapath:datapath0|OG_B_x[1..3,5,7..9]                                          ; Merged with Datapath:datapath0|OG_B_x[0] ;
-; Datapath:datapath0|OG_B_y[0,1,6..9]                                             ; Merged with Datapath:datapath0|OG_B_x[0] ;
-; Datapath:datapath0|OG_P1_x[0..9]                                                ; Merged with Datapath:datapath0|OG_B_x[0] ;
-; Datapath:datapath0|OG_P1_y[0..9]                                                ; Merged with Datapath:datapath0|OG_B_x[0] ;
-; Datapath:datapath0|OG_P2_x[5,6,8,9]                                             ; Merged with Datapath:datapath0|OG_B_x[0] ;
-; Datapath:datapath0|OG_P2_y[0..9]                                                ; Merged with Datapath:datapath0|OG_B_x[0] ;
 ; Datapath:datapath0|OG_B_x[6]                                                    ; Merged with Datapath:datapath0|OG_B_x[4] ;
 ; Datapath:datapath0|OG_B_y[2..5]                                                 ; Merged with Datapath:datapath0|OG_B_x[4] ;
-; Datapath:datapath0|OG_P2_x[0..4,7]                                              ; Merged with Datapath:datapath0|OG_B_x[4] ;
+; Datapath:datapath0|OG_P1_x[0..3]                                                ; Merged with Datapath:datapath0|OG_B_x[4] ;
+; Datapath:datapath0|OG_P2_x[4,7]                                                 ; Merged with Datapath:datapath0|OG_B_x[4] ;
+; Datapath:datapath0|OG_B_x[1..3,5,7..9]                                          ; Merged with Datapath:datapath0|OG_B_x[0] ;
+; Datapath:datapath0|OG_B_y[0,1,6..9]                                             ; Merged with Datapath:datapath0|OG_B_x[0] ;
+; Datapath:datapath0|OG_P1_x[4..9]                                                ; Merged with Datapath:datapath0|OG_B_x[0] ;
+; Datapath:datapath0|OG_P1_y[0..9]                                                ; Merged with Datapath:datapath0|OG_B_x[0] ;
+; Datapath:datapath0|OG_P2_x[0..3,5,6,8,9]                                        ; Merged with Datapath:datapath0|OG_B_x[0] ;
+; Datapath:datapath0|OG_P2_y[0..9]                                                ; Merged with Datapath:datapath0|OG_B_x[0] ;
+; gameSpeed[23..27]                                                               ; Merged with gameSpeed[22]                ;
+; gameSpeed[21]                                                                   ; Merged with gameSpeed[1]                 ;
+; gameSpeed[6]                                                                    ; Merged with gameSpeed[20]                ;
+; gameSpeed[5,19]                                                                 ; Merged with gameSpeed[13]                ;
+; gameSpeed[8]                                                                    ; Merged with gameSpeed[18]                ;
+; gameSpeed[7]                                                                    ; Merged with gameSpeed[17]                ;
+; gameSpeed[11,14]                                                                ; Merged with gameSpeed[0]                 ;
+; gameSpeed[4]                                                                    ; Merged with gameSpeed[12]                ;
 ; gameSpeed[22]                                                                   ; Stuck at GND due to stuck port data_in   ;
 ; Datapath:datapath0|OG_B_x[0]                                                    ; Stuck at GND due to stuck port data_in   ;
-; gameSpeed[18]                                                                   ; Stuck at VCC due to stuck port data_in   ;
 ; Control:control0|current_state~2                                                ; Lost fanout                              ;
 ; Control:control0|current_state~3                                                ; Lost fanout                              ;
 ; Control:control0|current_state~4                                                ; Lost fanout                              ;
 ; Control:control0|current_state~5                                                ; Lost fanout                              ;
 ; Control:control0|current_state~6                                                ; Lost fanout                              ;
 ; Control:control0|current_state~7                                                ; Lost fanout                              ;
-; Total Number of Removed Registers = 115                                         ;                                          ;
+; Total Number of Removed Registers = 112                                         ;                                          ;
 +---------------------------------------------------------------------------------+------------------------------------------+
 
 
@@ -380,12 +381,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 373   ;
-; Number of registers using Synchronous Clear  ; 164   ;
-; Number of registers using Synchronous Load   ; 20    ;
+; Total registers                              ; 383   ;
+; Number of registers using Synchronous Clear  ; 152   ;
+; Number of registers using Synchronous Load   ; 22    ;
 ; Number of registers using Asynchronous Clear ; 20    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 228   ;
+; Number of registers using Clock Enable       ; 229   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -395,27 +396,27 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |Motion_Pong|UltrasonicSensor:mySensor|usensor:myPercolatingSensor|trig_timer[7]                               ;
+; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |Motion_Pong|UltrasonicSensor:mySensor|usensor:myPercolatingSensor|trig_timer[23]                              ;
 ; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |Motion_Pong|UltrasonicSensor:mySensor|usensor:myPercolatingSensorTWOO|trig_timer[15]                          ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P1_shapeCounter_D[4]                                                           ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P1_shapeCounter_D[3]                                                           ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|B_shapeCounter_D[0]                                                            ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P2_shapeCounter_D[3]                                                           ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P2_shapeCounter_D[4]                                                           ;
 ; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|delayCounter[24]                                                               ;
-; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |Motion_Pong|Datapath:datapath0|delayCounter[4]                                                                ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |Motion_Pong|vga_adapter:VGA|vga_controller:controller|yCounter[2]                                             ;
-; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |Motion_Pong|UltrasonicSensor:mySensor|usensor:myPercolatingSensor|master_timer[19]                            ;
-; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |Motion_Pong|UltrasonicSensor:mySensor|usensor:myPercolatingSensorTWOO|master_timer[7]                         ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; Yes        ; |Motion_Pong|Datapath:datapath0|B_XposCounter[0]                                                               ;
-; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |Motion_Pong|gameSpeed[1]                                                                                      ;
-; 6:1                ; 10 bits   ; 40 LEs        ; 10 LEs               ; 30 LEs                 ; Yes        ; |Motion_Pong|Datapath:datapath0|B_YposCounter[6]                                                               ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P2_Position[1]                                                                 ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P1_Position[1]                                                                 ;
-; 8:1                ; 5 bits    ; 25 LEs        ; 20 LEs               ; 5 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P1_Position[4]                                                                 ;
-; 8:1                ; 5 bits    ; 25 LEs        ; 20 LEs               ; 5 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P2_Position[6]                                                                 ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Motion_Pong|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_60g1:auto_generated|mux_0nb:mux3|result_node[2] ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |Motion_Pong|Datapath:datapath0|Mux5                                                                           ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; No         ; |Motion_Pong|Datapath:datapath0|Mux16                                                                          ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Motion_Pong|Datapath:datapath0|Mux12                                                                          ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |Motion_Pong|Datapath:datapath0|delayCounter[5]                                                                ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |Motion_Pong|vga_adapter:VGA|vga_controller:controller|yCounter[9]                                             ;
+; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |Motion_Pong|UltrasonicSensor:mySensor|usensor:myPercolatingSensor|master_timer[8]                             ;
+; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |Motion_Pong|UltrasonicSensor:mySensor|usensor:myPercolatingSensorTWOO|master_timer[4]                         ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |Motion_Pong|Datapath:datapath0|B_YposCounter[3]                                                               ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; Yes        ; |Motion_Pong|Datapath:datapath0|B_XposCounter[6]                                                               ;
+; 5:1                ; 13 bits   ; 39 LEs        ; 26 LEs               ; 13 LEs                 ; Yes        ; |Motion_Pong|gameSpeed[16]                                                                                     ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P2_Position[1]                                                                 ;
+; 11:1               ; 5 bits    ; 35 LEs        ; 30 LEs               ; 5 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P1_Position[5]                                                                 ;
+; 11:1               ; 5 bits    ; 35 LEs        ; 30 LEs               ; 5 LEs                  ; Yes        ; |Motion_Pong|Datapath:datapath0|P2_Position[5]                                                                 ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Motion_Pong|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_60g1:auto_generated|mux_0nb:mux3|result_node[1] ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |Motion_Pong|Datapath:datapath0|Add61                                                                          ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Motion_Pong|Datapath:datapath0|Mux8                                                                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Motion_Pong|Datapath:datapath0|Mux9                                                                           ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Motion_Pong|Datapath:datapath0|Add61                                                                          ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Motion_Pong|Datapath:datapath0|Mux2                                                                           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------+
 
@@ -1018,42 +1019,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Datapath:datapath0|Hex_display:player2ScorePart2"                                                                      ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; OUT  ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (7 bits) it drives; bit(s) "OUT[7..7]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Datapath:datapath0|Hex_display:player2ScorePart1"                                                                      ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; OUT  ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (7 bits) it drives; bit(s) "OUT[7..7]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Datapath:datapath0|Hex_display:player1ScorePart2"                                                                      ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; OUT  ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (7 bits) it drives; bit(s) "OUT[7..7]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Datapath:datapath0|Hex_display:player1ScorePart1"                                                                      ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; OUT  ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (7 bits) it drives; bit(s) "OUT[7..7]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "Datapath:datapath0"                                                                                                                                                                 ;
 +-------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1071,29 +1036,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 136                         ;
-; cycloneiii_ff         ; 373                         ;
+; cycloneiii_ff         ; 383                         ;
 ;     CLR               ; 20                          ;
-;     ENA               ; 75                          ;
-;     ENA SCLR          ; 153                         ;
-;     SCLR              ; 11                          ;
-;     SLD               ; 20                          ;
-;     plain             ; 94                          ;
+;     ENA               ; 90                          ;
+;     ENA SCLR          ; 139                         ;
+;     SCLR              ; 13                          ;
+;     SLD               ; 22                          ;
+;     plain             ; 99                          ;
 ; cycloneiii_io_obuf    ; 36                          ;
-; cycloneiii_lcell_comb ; 2151                        ;
-;     arith             ; 964                         ;
-;         2 data inputs ; 473                         ;
-;         3 data inputs ; 491                         ;
-;     normal            ; 1187                        ;
+; cycloneiii_lcell_comb ; 2222                        ;
+;     arith             ; 962                         ;
+;         2 data inputs ; 476                         ;
+;         3 data inputs ; 486                         ;
+;     normal            ; 1260                        ;
 ;         0 data inputs ; 38                          ;
-;         1 data inputs ; 77                          ;
-;         2 data inputs ; 420                         ;
-;         3 data inputs ; 131                         ;
-;         4 data inputs ; 521                         ;
+;         1 data inputs ; 81                          ;
+;         2 data inputs ; 433                         ;
+;         3 data inputs ; 118                         ;
+;         4 data inputs ; 590                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 9                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 45.40                       ;
-; Average LUT depth     ; 20.35                       ;
+; Average LUT depth     ; 20.33                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1102,7 +1067,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:06     ;
+; Top            ; 00:00:08     ;
 +----------------+--------------+
 
 
@@ -1112,10 +1077,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Wed Jul 24 20:26:25 2019
+    Info: Processing started: Fri Jul 26 02:52:14 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Motion_Pong -c Motion_Pong
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Warning (12019): Can't analyze file -- file Verilog Modules/stablizier.v is missing
 Info (12021): Found 2 design units, including 2 entities, in source file verilog modules/ultrasonicsensor.v
     Info (12023): Found entity 1: UltrasonicSensor File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/UltrasonicSensor.v Line: 1
     Info (12023): Found entity 2: usensor File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/UltrasonicSensor.v Line: 50
@@ -1133,7 +1099,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file vga_ada
     Info (12023): Found entity 1: vga_address_translator File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/vga_adapter/vga_address_translator.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file vga_adapter/vga_adapter.v
     Info (12023): Found entity 1: vga_adapter File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/vga_adapter/vga_adapter.v Line: 78
-Warning (10275): Verilog HDL Module Instantiation warning at Motion_Pong.v(218): ignored dangling comma in List of Port Connections File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 218
+Warning (10275): Verilog HDL Module Instantiation warning at Motion_Pong.v(201): ignored dangling comma in List of Port Connections File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 201
 Info (12021): Found 1 design units, including 1 entities, in source file motion_pong.v
     Info (12023): Found entity 1: Motion_Pong File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 3
 Info (12127): Elaborating entity "Motion_Pong" for the top level hierarchy
@@ -1187,20 +1153,24 @@ Info (12133): Instantiated megafunction "vga_adapter:VGA|vga_pll:mypll|altpll:al
     Info (12134): Parameter "clk0_multiply_by" = "1"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
 Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VGA|vga_controller:controller" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/vga_adapter/vga_adapter.v Line: 252
-Info (12128): Elaborating entity "Control" for hierarchy "Control:control0" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 157
-Info (12128): Elaborating entity "Datapath" for hierarchy "Datapath:datapath0" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 211
-Warning (10230): Verilog HDL assignment warning at Datapath.v(175): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 175
-Warning (10230): Verilog HDL assignment warning at Datapath.v(176): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 176
-Warning (10230): Verilog HDL assignment warning at Datapath.v(181): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 181
-Warning (10230): Verilog HDL assignment warning at Datapath.v(182): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 182
-Warning (10230): Verilog HDL assignment warning at Datapath.v(188): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 188
-Warning (10230): Verilog HDL assignment warning at Datapath.v(189): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 189
-Warning (10230): Verilog HDL assignment warning at Datapath.v(194): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 194
-Warning (10230): Verilog HDL assignment warning at Datapath.v(296): truncated value with size 10 to match size of target (8) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 296
-Warning (10230): Verilog HDL assignment warning at Datapath.v(341): truncated value with size 10 to match size of target (8) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 341
-Warning (10230): Verilog HDL assignment warning at Datapath.v(448): truncated value with size 4 to match size of target (3) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 448
-Info (12128): Elaborating entity "Hex_display" for hierarchy "Datapath:datapath0|Hex_display:player1ScorePart1" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 478
-Info (12128): Elaborating entity "UltrasonicSensor" for hierarchy "UltrasonicSensor:mySensor" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 218
+Info (12128): Elaborating entity "Control" for hierarchy "Control:control0" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 147
+Warning (10272): Verilog HDL Case Statement warning at Control.v(115): case item expression covers a value already covered by a previous case item File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Control.v Line: 115
+Warning (10272): Verilog HDL Case Statement warning at Control.v(116): case item expression covers a value already covered by a previous case item File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Control.v Line: 116
+Warning (10272): Verilog HDL Case Statement warning at Control.v(118): case item expression covers a value already covered by a previous case item File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Control.v Line: 118
+Warning (10272): Verilog HDL Case Statement warning at Control.v(119): case item expression covers a value already covered by a previous case item File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Control.v Line: 119
+Info (12128): Elaborating entity "Datapath" for hierarchy "Datapath:datapath0" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 194
+Warning (10230): Verilog HDL assignment warning at Datapath.v(173): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 173
+Warning (10230): Verilog HDL assignment warning at Datapath.v(174): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 174
+Warning (10230): Verilog HDL assignment warning at Datapath.v(179): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 179
+Warning (10230): Verilog HDL assignment warning at Datapath.v(180): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 180
+Warning (10230): Verilog HDL assignment warning at Datapath.v(186): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 186
+Warning (10230): Verilog HDL assignment warning at Datapath.v(187): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 187
+Warning (10230): Verilog HDL assignment warning at Datapath.v(192): truncated value with size 32 to match size of target (1) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 192
+Warning (10230): Verilog HDL assignment warning at Datapath.v(292): truncated value with size 10 to match size of target (8) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 292
+Warning (10230): Verilog HDL assignment warning at Datapath.v(366): truncated value with size 10 to match size of target (8) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 366
+Warning (10230): Verilog HDL assignment warning at Datapath.v(487): truncated value with size 4 to match size of target (3) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 487
+Info (12128): Elaborating entity "Hex_display" for hierarchy "Datapath:datapath0|Hex_display:player1ScorePart1" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/Datapath.v Line: 517
+Info (12128): Elaborating entity "UltrasonicSensor" for hierarchy "UltrasonicSensor:mySensor" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 201
 Warning (10230): Verilog HDL assignment warning at UltrasonicSensor.v(26): truncated value with size 26 to match size of target (10) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/UltrasonicSensor.v Line: 26
 Warning (10230): Verilog HDL assignment warning at UltrasonicSensor.v(27): truncated value with size 26 to match size of target (10) File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/UltrasonicSensor.v Line: 27
 Info (12128): Elaborating entity "usensor" for hierarchy "UltrasonicSensor:mySensor|usensor:myPercolatingSensor" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Verilog Modules/UltrasonicSensor.v Line: 34
@@ -1228,7 +1198,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/add_
     Info (12023): Found entity 1: add_sub_7pc File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/db/add_sub_7pc.tdf Line: 22
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
     Info (12023): Found entity 1: add_sub_8pc File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/db/add_sub_8pc.tdf Line: 22
-Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
     Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[1]" and its non-tri-state driver. File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 32
     Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[5]" and its non-tri-state driver. File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 32
@@ -1288,7 +1258,6 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "VGA_SYNC_N" is stuck at VCC File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 44
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 38 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/output_files/Motion_Pong.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 11 input pin(s) that do not drive logic
@@ -1303,23 +1272,17 @@ Warning (21074): Design contains 11 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[14]" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 30
     Warning (15610): No output dependent on input pin "SW[16]" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 30
     Warning (15610): No output dependent on input pin "SW[17]" File: C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/Motion_Pong.v Line: 30
-Info (21057): Implemented 2305 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2378 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 77 output pins
     Info (21060): Implemented 36 bidirectional pins
-    Info (21061): Implemented 2159 logic cells
+    Info (21061): Implemented 2232 logic cells
     Info (21064): Implemented 9 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 91 warnings
-    Info: Peak virtual memory: 4809 megabytes
-    Info: Processing ended: Wed Jul 24 20:26:49 2019
-    Info: Elapsed time: 00:00:24
-    Info: Total CPU time (on all processors): 00:00:45
-
-
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in C:/Users/gsman/OneDrive/Documents/GitHub/Motion-Pong/output_files/Motion_Pong.map.smsg.
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 96 warnings
+    Info: Peak virtual memory: 4807 megabytes
+    Info: Processing ended: Fri Jul 26 02:52:49 2019
+    Info: Elapsed time: 00:00:35
+    Info: Total CPU time (on all processors): 00:01:00
 
 

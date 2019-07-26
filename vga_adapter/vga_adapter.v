@@ -109,7 +109,7 @@ module vga_adapter(
 	 * to reduce the resolution for the Video Memory to fit within the on-chip memory limits.
 	 */
 	
-	parameter BACKGROUND_IMAGE = "background.mif";
+	parameter BACKGROUND_IMAGE = "motion_pong.jpg";
 	/* The initial screen displayed when the circuit is first programmed onto the DE2 board can be
 	 * defined useing an MIF file. The file contains the initial colour for each pixel on the screen
 	 * and is placed in the Video Memory (VideoMemory module) upon programming. Note that resetting the

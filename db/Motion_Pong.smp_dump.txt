@@ -1,21 +1,28 @@
 
 State Machine - |Motion_Pong|Control:control0|current_state
-Name current_state.S_DELETE_PADDLE2 current_state.S_DELETE_WAIT_PADDLE2 current_state.S_PLOT_PADDLE2 current_state.S_PLOT_WAIT_PADDLE2 current_state.S_DELETE_PADDLE1 current_state.S_DELETE_WAIT_PADDLE1 current_state.S_PLOT_PADDLE1 current_state.S_PLOT_WAIT_PADDLE1 current_state.S_DONE current_state.S_DELETE current_state.S_DELETE_WAIT current_state.S_WAIT current_state.S_WAIT_WAIT current_state.S_PLOT current_state.S_PLOT_WAIT current_state.S_LOAD current_state.S_LOAD_WAIT current_state.S_INIT 
-current_state.S_INIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-current_state.S_LOAD_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
-current_state.S_LOAD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
-current_state.S_PLOT_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
-current_state.S_PLOT 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
-current_state.S_WAIT_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
-current_state.S_WAIT 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
-current_state.S_DELETE_WAIT 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
-current_state.S_DELETE 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
-current_state.S_DONE 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
-current_state.S_PLOT_WAIT_PADDLE1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
-current_state.S_PLOT_PADDLE1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
-current_state.S_DELETE_WAIT_PADDLE1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
-current_state.S_DELETE_PADDLE1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
-current_state.S_PLOT_WAIT_PADDLE2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-current_state.S_PLOT_PADDLE2 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-current_state.S_DELETE_WAIT_PADDLE2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-current_state.S_DELETE_PADDLE2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Name current_state.S_DISPLAY_DONE current_state.S_DISPLAY_PADDLE2 current_state.S_DISPLAY_WAIT_PADDLE2 current_state.S_DISPLAY_BALL current_state.S_DISPLAY_WAIT_BALL current_state.S_DISPLAY_PADDLE1 current_state.S_DISPLAY_WAIT_PADDLE1 current_state.S_DELETE_PADDLE2 current_state.S_DELETE_WAIT_PADDLE2 current_state.S_PLOT_PADDLE2 current_state.S_PLOT_WAIT_PADDLE2 current_state.S_DELETE_PADDLE1 current_state.S_DELETE_WAIT_PADDLE1 current_state.S_PLOT_PADDLE1 current_state.S_PLOT_WAIT_PADDLE1 current_state.S_DONE current_state.S_DELETE current_state.S_DELETE_WAIT current_state.S_WAIT current_state.S_WAIT_WAIT current_state.S_PLOT current_state.S_PLOT_WAIT current_state.S_LOAD current_state.S_LOAD_WAIT current_state.S_INIT 
+current_state.S_INIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+current_state.S_LOAD_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+current_state.S_LOAD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+current_state.S_PLOT_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+current_state.S_PLOT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+current_state.S_WAIT_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+current_state.S_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+current_state.S_DELETE_WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+current_state.S_DELETE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+current_state.S_DONE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+current_state.S_PLOT_WAIT_PADDLE1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+current_state.S_PLOT_PADDLE1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DELETE_WAIT_PADDLE1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DELETE_PADDLE1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_PLOT_WAIT_PADDLE2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_PLOT_PADDLE2 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DELETE_WAIT_PADDLE2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DELETE_PADDLE2 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DISPLAY_WAIT_PADDLE1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DISPLAY_PADDLE1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DISPLAY_WAIT_BALL 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DISPLAY_BALL 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DISPLAY_WAIT_PADDLE2 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DISPLAY_PADDLE2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.S_DISPLAY_DONE 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 

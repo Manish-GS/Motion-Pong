@@ -7,22 +7,15 @@ module Datapath(clock,
                 HEX2,
                 HEX3,
 
+                ld_Val,
+
                 data,
                 sensor_1,
                 sensor_2,
 
                 sel_out,
                 sel_col,
-                
-                ld_bx,
-                ld_by,
 
-                ld_p1x,
-                ld_p1y,
-
-                ld_p2x,
-                ld_p2y,
-                
                 en_B_shapeCounter_D,
                 en_B_shapeCounter_E,
 
@@ -51,54 +44,58 @@ module Datapath(clock,
 
 /* ------------- INPUT SIGNALS ------------- */
 
-    /* FROM DE2 BOARD */
+    /* --  FROM THE DE2 BOARD -- */
+        input clock;                // The clock signal.
+        input resetn;               // The reset signal.
 
-    input clock, resetn;
-    input [9:0] data;
-    input [27:0] gameSpeed;
+    /* -- FROM THE USER -- */
+        /* SWITCHES AND BUTTONS */
+        input [27:0] gameSpeed;     // Determines the Speed at which the game is played.
+        input [9:0] data;           // Data from the user about colours of the shape.
 
-    /* FROM CONTROL MODULE */
+        /* ULTRASONIC */
+        input [9:0] sensor_1;       // Data from ultrasonic sensor 1.
+        input [9:0] sensor_2;       // Data from ultrasonic sensor 2.
 
-    /* OUPUT CONTROL */
-    // Determines which shape to draw
-    input [1:0] sel_out;
-    input [1:0] sel_col;
-    input en_delayCounter;
 
-    /* BALL CONTROLS */
-    input ld_bx, ld_by;
-    input en_B_shapeCounter_D;
-    input en_B_shapeCounter_E;
-    
-    /* PADDLE 1 CONTROLS */
-    input [9:0] sensor_1;   // Data from ultrasonic sensor
-    input ld_p1x, ld_p1y;
-    input en_P1_shapeCounter_D;
-    input en_P1_shapeCounter_E;
+    /* -- FROM CONTROL MODULE -- */
+        /* OUPUT CONTROL */
+        input [1:0] sel_out;        // Determines the shape to draw.
+        input [1:0] sel_col;        // Determines the colour of each shape.
+        input en_delayCounter;      // Enable signal for the delay.
 
-    /* PADDLE 2 CONTROLS */
-    input [9:0] sensor_2;   // Data from ultrasonic sensor
-    input ld_p2x, ld_p2y;
-    input en_P2_shapeCounter_D;
-    input en_P2_shapeCounter_E;
+        /* GENERAL CONTROLS */
+        input ld_Val;
+
+        /* BALL CONTROLS */
+        input en_B_shapeCounter_D;
+        input en_B_shapeCounter_E;
+        
+        /* PADDLE 1 CONTROLS */
+        input en_P1_shapeCounter_D;
+        input en_P1_shapeCounter_E;
+
+        /* PADDLE 2 CONTROLS */
+        input en_P2_shapeCounter_D;
+        input en_P2_shapeCounter_E;
     
 
 /* ----------- END INPUT SIGNALS ----------- */
 
 /* ------------- OUTPUT SIGNALS ------------- */
 
-    /* TO VGA_Adapter */
-    output reg [2:0] colour_out;
-    output reg [9:0] x_out;
-	output reg [9:0] y_out;
+    /* TO THE VGA ADAPTER */
+    output reg [2:0] colour_out;    // The Colour output to the VGA Adapter
+    output reg [9:0] x_out;         // The X Coordinate of the shape to the VGA Adapter
+	output reg [9:0] y_out;         // The Y Coordinate of the shape to the VGA Adapter
 
-    /* TO Control Module */
+    /* TO THE CONTROL MODULE */
     output fin_Wait;
     output fin_B_D, fin_B_E;
     output fin_P1_D, fin_P1_E;
     output fin_P2_D, fin_P2_E;
 
-    /*HEX displays scores for each Player*/
+    /* TO THE HEX DISPLAY */
     output [6:0] HEX0;
     output [6:0] HEX1;
     output [6:0] HEX2;
@@ -151,6 +148,7 @@ module Datapath(clock,
     // Register for original Paddle1 Position
     reg [9:0] OG_P2_x;    // Store the original x position of the ball
 	reg [9:0] OG_P2_y;    // Store the original y position of the ball
+
 
     // WIRES
 
@@ -245,17 +243,15 @@ module Datapath(clock,
             B_XposCounter <= B_XposCounter + 1'b1;
         else if((B_moveX == 1'b1) & (B_X_dir == 1'b0))
             B_XposCounter <= B_XposCounter - 1'b1;
-        else if(OG_B_x + B_XposCounter == 10'd0)        // Reset the ball to be in the middle, and Player 2 wins
+        else if(OG_B_x + B_XposCounter == OG_P1_x - 1'b1)        // Reset the ball to be in the middle, and Player 2 wins
             begin
                 B_XposCounter <= 10'd0;
-                B_YposCounter <= 10'd0;
                 player_2_score <= player_2_score + 1'b1;
             end
             
-        else if(OG_B_x + B_XposCounter + 2'd2 == 10'd160)   //Reset ball to middle, and Player 1 wins
+        else if(OG_B_x + B_XposCounter + 2'd2 == OG_P2_x + 1'b1)   //Reset ball to middle, and Player 1 wins
             begin
                 B_XposCounter <= 10'd0; 
-                B_YposCounter <= 10'd0;
                 player_1_score <= player_1_score + 1'b1;
             end
         
@@ -293,23 +289,52 @@ module Datapath(clock,
     always @(posedge clock)
     begin
         if(resetn == 1'b0)
-            P1_Position <= 10'd0;
-        else if((P1_move == 1'b1) & (P1_Position < (sensor_1 - 2'd2) * 7) & (sensor_1 < 5'd18))
-            if((sensor_1 - 2'd2) * 7 - P1_Position > 50)
-                    P1_Position <= P1_Position + 5'd10;
-            else if((sensor_1 - 2'd2) * 7 - P1_Position > 3'd5)
-                    P1_Position <= P1_Position + 2'd2;
-                else
-                    P1_Position <= P1_Position + 1'b1;
+            P1_Position <= 10'd1;
         
-        else if((P1_move == 1'b1) & (P1_Position > (sensor_1 - 2'd2) * 7) & (sensor_1 < 5'd18))
-            if(P1_Position - (sensor_1 - 2'd2) * 7 > 50)
-                P1_Position <= P1_Position - 4'd8;
-            else if(P1_Position - (sensor_1 - 2'd2) * 7 > 3'd5)
-                P1_Position <= P1_Position - 2'd2;
-            else
-                P1_Position <= P1_Position - 1'b1;
-    end     
+        // set the position to 0 if the sensor is in the blind spot
+        if((P1_move == 1'b1) & (sensor_1 < 7) & (P1_Position < 10'd0))
+            P1_Position <= P1_Position - 1'b1;
+
+        // While the paddle isn't being drawn over or at 120 pixels long, continue
+        else if(OG_P1_y + P1_Position + 4'd15 < 10'd120)
+        begin
+
+            // If the user is moving their hand away from the sensor, move the paddle down
+            if((P1_move == 1'b1) & (P1_Position < (sensor_1 - 2'd2) * 7) & (sensor_1 < 5'd20))
+
+                if(((sensor_1 - 2'd2) * 7) - P1_Position > 80)
+                    P1_Position <= P1_Position + 6'd40;
+
+                else if(((sensor_1 - 2'd2) * 7) - P1_Position > 50)
+                    P1_Position <= P1_Position + 5'd20;
+
+                else if(((sensor_1 - 2'd2) * 7) - P1_Position > 20)
+                    P1_Position <= P1_Position + 3'd4;
+
+                else
+                    P1_Position <= P1_Position + 2'd2;
+
+            // Else if user is moving hand TOWARD the sensor, move it up
+            else if((P1_move == 1'b1) & (P1_Position > (sensor_1 - 2'd2) * 7) & (sensor_1 < 5'd20))
+
+                if(P1_Position - ((sensor_1 - 2'd2) * 7) > 80)
+                    P1_Position <= P1_Position - 6'd40;
+
+                else if(P1_Position - ((sensor_1 - 2'd2) * 7) > 50)
+                    P1_Position <= P1_Position - 5'd20;
+
+                else if(P1_Position - ((sensor_1 - 2'd2) * 7) > 20)
+                    P1_Position <= P1_Position - 3'd4;
+
+                else
+                    P1_Position <= P1_Position - 1'b1;
+        end
+        
+        // If the paddle is going to overflow, decrement it
+        else if(OG_P1_y + P1_Position + 4'd15 >= 10'd120)
+            P1_Position <= P1_Position - 1'b1;
+        
+    end    
 
 
 // ---------- END PADDLE COUNTERS ---------- //
@@ -339,21 +364,47 @@ module Datapath(clock,
     begin
         if(resetn == 1'b0)
             P2_Position <= 10'd0;
-        else if((P2_move == 1'b1) & (P2_Position < (sensor_2 - 2) * 7) & (sensor_2 < 5'd18))
-            if((sensor_2 - 2) * 7 - P2_Position > 50)
-                P2_Position <= P2_Position + 4'd8;
-            else if((sensor_2 - 2) * 7 - P2_Position > 3'd5)
-                P2_Position <= P2_Position + 2'd2;
-            else
-                P2_Position <= P2_Position + 1'b1;
-        
-        else if((P2_move == 1'b1) & (P2_Position > (sensor_2 - 2) * 7) & (sensor_2 < 5'd18))
-            if(P2_Position - (sensor_2 - 2) * 7 > 50)
-                P2_Position <= P2_Position - 4'd8;
-            else if(P2_Position - (sensor_2 - 2) * 7 > 3'd5)
-                P2_Position <= P2_Position - 2'd2;
-            else
-                P2_Position <= P2_Position - 1'b1;
+
+        // Set the position to 0 if the sensor is in the blind spot
+        if((P2_move == 1'b1) & (sensor_2 < 7) & (P2_Position < 10'd0))
+            P2_Position <= P2_Position - 1'b1;
+
+        // While the paddle isn't being drawn over or at 120 pixels long, continue
+        else if(OG_P2_y + P2_Position + 4'd15 < 10'd120)
+        begin
+            // If the user is moving their hand AWAY from the sensor, move the paddle down
+            if((P2_move == 1'b1) & (P2_Position < (sensor_2 - 2) * 7) & (sensor_2 < 5'd20))
+            
+                if(((sensor_2 - 2'd2) * 7) - P2_Position > 80)
+                    P2_Position <= P2_Position + 6'd40;
+
+                else if(((sensor_2 - 2'd2) * 7) - P2_Position > 50)
+                    P2_Position <= P2_Position + 5'd20;
+
+                else if(((sensor_2 - 2'd2) * 7) - P2_Position > 20)
+                    P2_Position <= P2_Position + 3'd4;
+                    
+                else
+                    P2_Position <= P2_Position + 1'b1;
+
+            // Else if user is moving hand TOWARD the sensor, move it up
+            if((P2_move == 1'b1) & (P2_Position > (sensor_2 - 2) * 7) & (sensor_2 < 5'd20))
+            
+                if(P2_Position - ((sensor_2 - 2'd2) * 7) > 80)
+                    P2_Position <= P2_Position - 6'd40;
+
+                else if(P2_Position - ((sensor_2 - 2'd2) * 7) > 50)
+                    P2_Position <= P2_Position - 5'd20;
+
+                else if(P2_Position - ((sensor_2 - 2'd2) * 7) > 20)
+                    P2_Position <= P2_Position - 3'd4;
+
+                else
+                    P2_Position <= P2_Position - 1'b1;
+        end
+        // If the paddle is going to overflow, decrement it
+        else if(OG_P2_y + P2_Position + 4'd15 >= 10'd120)
+            P2_Position <= P2_Position - 1'b1;
     end    
 
 
@@ -362,80 +413,68 @@ module Datapath(clock,
 
 // ------------- REGISTERS ------------- //
 
-	// register for x
+    /* 
+        STORING POSITIONS
+
+        Stores the original positions of
+        -> Ball
+        -> Paddles.
+    */
     always @(posedge clock)
     begin
         if(resetn == 1'b0)
-            OG_B_x <= 10'd0;
-        else if(ld_bx == 1'b1)
-            OG_B_x <= 10'd80;
+        begin
+            OG_B_y <= 10'd0;    // Reset the Y Coordinate of the Ball
+            OG_B_x <= 10'd0;    // Reset the X Coordinate of the Ball
+            OG_P1_y <= 10'd0;   // Reset the Y Coordinate of the Paddle 1
+            OG_P1_x <= 10'd0;   // Reset the X Coordinate of the Paddle 1
+            OG_P2_y <= 10'd0;   // Reset the Y Coordinate of the Paddle 2
+            OG_P2_x <= 10'd0;   // Reset the X Coordinate of the Paddle 2
+        end
+        else if(ld_Val == 1'b1)
+        begin
+            OG_B_y <= 10'd60;   // Store the Y Coordinate of the Ball
+            OG_B_x <= 10'd80;   // Store the X Coordinate of the Ball
+            OG_P1_y <= 10'd0;   // Store the Y Coordinate of the Paddle 1
+            OG_P1_x <= 10'd15;   // Store the X Coordinate of the Paddle 1
+            OG_P2_y <= 10'd0;   // Store the Y Coordinate of the Paddle 2
+            OG_P2_x <= 10'd144; // Store the X Coordinate of the Paddle 2
+        end
     end
 
-    // register for y
-    always @(posedge clock)
-    begin
-        if(resetn == 1'b0)
-            OG_B_y <= 10'd0;
-        else if(ld_by == 1'b1)
-            OG_B_y <= 10'd60;
-    end
+    /* 
+        COLLISION DETECTION 
 
-    // register for x paddle1
+        Determines whether a collision occured between the Ball
+        and one of the following.
+        -> Top Wall
+        -> Bottom Wall
+        -> Paddle 1
+        -> Paddle 2
+    */
     always @(posedge clock)
     begin
-        if(resetn == 1'b0)
-            OG_P1_x <= 10'd0;
-        else if(ld_bx == 1'b1)
-            OG_P1_x <= 10'd0;
-    end
+        // Check the collision against Paddle 1
+        if((OG_B_x + B_XposCounter == OG_P1_x + 1'b1) & (OG_B_y + B_YposCounter + 2'd2 >= OG_P1_y + P1_Position) & (OG_B_y + B_YposCounter <= OG_P1_y + P1_Position + 4'd15))
+            B_X_dir <= 1'b1;    // If collision change the X direction to right
 
-    // register for y paddle1
-    always @(posedge clock)
-    begin
-        if(resetn == 1'b0)
-            OG_P1_y <= 10'd0;
-        else if(ld_by == 1'b1)
-            OG_P1_y <= 10'd0;
-    end
+        // Check the collision against Paddle 2
+        else if((OG_B_x + B_XposCounter + 2'd2 == OG_P2_x) & (OG_B_y + B_YposCounter + 2'd2 >= OG_P2_y + P2_Position) & (OG_B_y + B_YposCounter <= OG_P2_y + P2_Position + 4'd15))
+            B_X_dir <= 1'b0;    // If collision change the X direction to left
 
-    // register for x paddle1
-    always @(posedge clock)
-    begin
-        if(resetn == 1'b0)
-            OG_P2_x <= 10'd0;
-        else if(ld_p2x == 1'b1)
-            OG_P2_x <= 10'd159;
-    end
+        // Check the collision against the Top wall
+        else if(OG_B_y + B_YposCounter == 8'd0)
+            B_Y_dir <= 1'b1;    // If collision change the Y direction to down
+            
+        // Check the collision against the Bottom wall
+        else if(OG_B_y + B_YposCounter + 2'd2 == 8'd118)
+            B_Y_dir <= 1'b0;    // If collision change the Y direction to up
 
-    // register for y paddle1
-    always @(posedge clock)
-    begin
-        if(resetn == 1'b0)
-            OG_P2_y <= 10'd0;
-        else if(ld_p2y == 1'b1)
-            OG_P2_y <= 10'd0;
-    end
+        else if(OG_B_x + B_XposCounter == OG_P1_x - 1'b1)
+            B_X_dir <= 1'b1;
 
-    // Collision Detection
-    // Ball detection with the walls
-    always @(posedge clock)
-    begin
-         //else if(OG_B_x + B_shapeCounter_D[1:0] + B_shapeCounter_E[1:0] + B_XposCounter == 10'd160)
-            //B_X_dir <= 1'b0;
-        if((OG_B_x + B_shapeCounter_D[1:0] + B_shapeCounter_E[1:0] + B_XposCounter == OG_P1_x + 1'b1) &
-           (OG_B_y + B_YposCounter >= OG_P1_y + P1_Position) &
-           (OG_B_y + B_shapeCounter_D[3:2] + B_shapeCounter_E[3:2] + B_YposCounter <= OG_P1_y + 4'd15 + P1_Position))
-            begin
-                B_X_dir <= 1'b1;
-            end
-        else if((OG_B_x + B_shapeCounter_D[1:0] + B_shapeCounter_E[1:0] + B_XposCounter + 2'd2 == OG_P2_x) &
-                (OG_B_y + B_YposCounter >= OG_P2_y + P2_Position) &
-                (OG_B_y + B_shapeCounter_D[3:2] + B_shapeCounter_E[3:2] + B_YposCounter <= OG_P2_y + 4'd15 + P2_Position))
+        else if(OG_B_x + B_XposCounter + 2'd2 == OG_P2_x + 1'b1)
             B_X_dir <= 1'b0;
-        else if(OG_B_y + B_shapeCounter_D[3:2] + B_shapeCounter_E[3:2] + B_YposCounter == 8'd0)
-            B_Y_dir <= 1'b1;
-        else if(OG_B_y + B_shapeCounter_D[3:2] + B_shapeCounter_E[3:2] + B_YposCounter == 8'd116)
-            B_Y_dir <= 1'b0;
     end
 // ----------- END REGISTERS ----------- // 
 
@@ -444,7 +483,7 @@ module Datapath(clock,
 		begin
 			case (sel_col)
 				2'd0: colour_out = data[9:7];
-				2'b1: colour_out = 3'd0;
+				2'd1: colour_out = 3'd0;
                 2'd2: colour_out = data[3:0];
                 2'd3: colour_out = 3'd0;
 			endcase
@@ -454,8 +493,8 @@ module Datapath(clock,
         begin
             case (sel_out)
                 2'd0: x_out = OG_B_x + B_shapeCounter_D[1:0] + B_shapeCounter_E[1:0] + B_XposCounter;
-                2'd1: x_out = OG_P1_x + P1_shapeCounter_D[0] + P1_shapeCounter_E[0];
-                2'd2: x_out = OG_P2_x + P2_shapeCounter_D[0] + P2_shapeCounter_E[0];
+                2'd1: x_out = OG_P1_x;
+                2'd2: x_out = OG_P2_x;
                 default: x_out = OG_B_x + B_shapeCounter_D[1:0] + B_shapeCounter_E[1:0] + B_XposCounter;
             endcase
         end

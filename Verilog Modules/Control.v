@@ -5,26 +5,19 @@ module Control( clock,
                 fin_B_D,
                 fin_B_E,
 
-                ld_bx_out,
-                ld_by_out,
+                fin_P1_D,
+                fin_P1_E,
+
+                fin_P2_D,
+                fin_P2_E,
+
+                ld_Val_out,
 
                 en_B_shapeCounter_D,
                 en_B_shapeCounter_E,
 
-                fin_P1_D,
-                fin_P1_E,
-
-                ld_p1x_out,
-                ld_p1y_out,
-
                 en_P1_shapeCounter_D,
                 en_P1_shapeCounter_E,
-                
-                fin_P2_D,
-                fin_P2_E,
-
-                ld_p2x_out,
-                ld_p2y_out,
 
                 en_P2_shapeCounter_D,
                 en_P2_shapeCounter_E,
@@ -46,15 +39,10 @@ module Control( clock,
     input fin_Wait;
 
     // ouput signals
-    output reg plot, ld_bx_out, ld_by_out;
+    output reg plot, ld_Val_out;
     output reg en_B_shapeCounter_D, en_B_shapeCounter_E;
-
-    output reg ld_p1x_out, ld_p1y_out;
     output reg en_P1_shapeCounter_D, en_P1_shapeCounter_E;
-
-    output reg ld_p2x_out, ld_p2y_out;
     output reg en_P2_shapeCounter_D, en_P2_shapeCounter_E;
-
     output reg en_delayCounter;
 
     output reg [1:0] sel_col;
@@ -65,20 +53,19 @@ module Control( clock,
     // declare registers for the FSM
     reg [5:0] current_state, next_state;
 
-    // Hex_display hd1(
-    //     .IN(current_state[3:0]),
-    //     .OUT(HEX0)
-    // );
-
-    // Hex_display hd2(
-    //     .IN(next_state[3:0]),
-    //     .OUT(HEX2)
-    // );
-
     // assign the states a value
     localparam  S_INIT = 5'd0,
                 S_LOAD_WAIT = 5'd1,
 				S_LOAD = 5'd2,
+                
+                S_DISPLAY_WAIT_PADDLE1 = 5'd18,
+                S_DISPLAY_PADDLE1 = 5'd19,
+                S_DISPLAY_WAIT_BALL = 5'd20,
+                S_DISPLAY_BALL = 5'd21,
+                S_DISPLAY_WAIT_PADDLE2 = 5'd22,
+                S_DISPLAY_PADDLE2 = 5'd23,
+                S_DISPLAY_DONE = 5'd24,
+
                 S_PLOT_WAIT = 5'd3,
                 S_PLOT = 5'd4,
                 S_WAIT_WAIT = 5'd5,
@@ -101,9 +88,26 @@ module Control( clock,
     always@(*)
     begin: state_table 
             case (current_state)
-                S_INIT: next_state = go ? S_LOAD_WAIT : S_INIT;
+                S_INIT: next_state = S_LOAD_WAIT;
                 S_LOAD_WAIT: next_state = S_LOAD;
-                S_LOAD: next_state = S_PLOT_WAIT_PADDLE1;
+                S_LOAD: next_state = S_DISPLAY_WAIT_PADDLE1;
+
+                S_DISPLAY_WAIT_PADDLE1: next_state = S_DISPLAY_PADDLE1;
+                S_DISPLAY_PADDLE1: next_state = fin_P1_D ? S_DISPLAY_WAIT_BALL : S_DISPLAY_PADDLE1;
+
+                S_DISPLAY_WAIT_BALL: next_state = S_DISPLAY_BALL;
+                S_DISPLAY_BALL: next_state = fin_B_D ? S_DISPLAY_WAIT_PADDLE2 : S_DISPLAY_BALL;
+                
+                S_DISPLAY_WAIT_PADDLE2: next_state = S_DISPLAY_PADDLE2;
+                S_DISPLAY_PADDLE2: next_state = fin_P2_D ? S_DISPLAY_DONE : S_DISPLAY_PADDLE2;
+
+                S_DISPLAY_DONE: next_state = go ? S_PLOT_WAIT : S_DISPLAY_WAIT_PADDLE1;
+
+                S_PLOT_WAIT: next_state = S_PLOT;
+                S_PLOT: next_state = fin_B_D ? S_PLOT_WAIT_PADDLE2 : S_PLOT;
+
+                S_PLOT_WAIT_PADDLE2: next_state = S_PLOT_PADDLE2;
+                S_PLOT_PADDLE2: next_state = fin_P2_D ? S_WAIT_WAIT : S_PLOT_PADDLE2;
                 
                 S_PLOT_WAIT_PADDLE1: next_state = S_PLOT_PADDLE1;
                 S_PLOT_PADDLE1: next_state = fin_P1_D ? S_PLOT_WAIT : S_PLOT_PADDLE1;
@@ -126,7 +130,7 @@ module Control( clock,
                 S_DELETE_WAIT_PADDLE2: next_state = S_DELETE_PADDLE2;
                 S_DELETE_PADDLE2: next_state = fin_P2_E ? S_DONE : S_DELETE_PADDLE2;
 
-                S_DONE: next_state = go ? S_PLOT_WAIT_PADDLE1 : S_INIT;
+                S_DONE: next_state = S_PLOT_WAIT_PADDLE1;
 
             default: next_state = S_INIT;
         endcase
@@ -143,14 +147,7 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd0;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;                
 
                 en_delayCounter = 1'b0;
 
@@ -170,14 +167,7 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd0;
 
-                ld_bx_out = 1'b1;
-                ld_by_out = 1'b1;
-
-                ld_p1x_out = 1'b1;
-                ld_p1y_out = 1'b1;
-
-                ld_p2x_out = 1'b1;
-                ld_p2y_out = 1'b1;
+                ld_Val_out = 1'b1;
 
                 en_delayCounter = 1'b0;
 
@@ -196,14 +186,7 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd0;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -222,15 +205,8 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd0;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
-
+                ld_Val_out = 1'b0;
+ 
                 en_delayCounter = 1'b0;
 
 				en_B_shapeCounter_D = 1'b1;
@@ -248,14 +224,7 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd0;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -274,14 +243,7 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd0;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b1;
 
@@ -301,14 +263,7 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd0;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b1;
 
@@ -328,14 +283,7 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd1;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -355,14 +303,7 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd1;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -382,14 +323,7 @@ module Control( clock,
                 sel_out = 2'd1;
                 sel_col = 2'd2;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -408,14 +342,7 @@ module Control( clock,
                 sel_out = 2'd1;
                 sel_col = 2'd2;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -434,14 +361,7 @@ module Control( clock,
                 sel_out = 2'd1;
                 sel_col = 2'd3;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -461,14 +381,7 @@ module Control( clock,
                 sel_out = 2'd1;
                 sel_col = 2'd3;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -488,15 +401,8 @@ module Control( clock,
                 sel_out = 2'd2;
                 sel_col = 2'd2;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
-
+                ld_Val_out = 1'b0;
+ 
                 en_delayCounter = 1'b0;
 
 				en_B_shapeCounter_D = 1'b0;
@@ -514,14 +420,7 @@ module Control( clock,
                 sel_out = 2'd2;
                 sel_col = 2'd2;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -540,15 +439,8 @@ module Control( clock,
                 sel_out = 2'd2;
                 sel_col = 2'd3;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
-
+                ld_Val_out = 1'b0;
+ 
                 en_delayCounter = 1'b0;
 
 				en_B_shapeCounter_D = 1'b0;
@@ -567,14 +459,7 @@ module Control( clock,
                 sel_out = 2'd2;
                 sel_col = 2'd3;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b1;
 
@@ -594,14 +479,7 @@ module Control( clock,
                 sel_out = 2'd0;
                 sel_col = 2'd0;
 
-                ld_bx_out = 1'b0;
-                ld_by_out = 1'b0;
-
-                ld_p1x_out = 1'b0;
-                ld_p1y_out = 1'b0;
-
-                ld_p2x_out = 1'b0;
-                ld_p2y_out = 1'b0;
+                ld_Val_out = 1'b0;
 
                 en_delayCounter = 1'b0;
 
@@ -614,6 +492,146 @@ module Control( clock,
                 en_P2_shapeCounter_D = 1'b0;
                 en_P2_shapeCounter_E = 1'b0; 
 
+            end
+            S_DISPLAY_WAIT_PADDLE1: 
+            begin
+                plot = 1'b1;
+
+                sel_out = 2'd1;
+                sel_col = 2'd2;
+
+                ld_Val_out = 1'b0;
+
+                en_delayCounter = 1'b0;
+
+				en_B_shapeCounter_D = 1'b0;
+                en_B_shapeCounter_E = 1'b0;
+
+                en_P1_shapeCounter_D = 1'b1;
+                en_P1_shapeCounter_E = 1'b0;
+
+                en_P2_shapeCounter_D = 1'b0;
+                en_P2_shapeCounter_E = 1'b0;
+            end
+            S_DISPLAY_PADDLE1:
+            begin
+                plot = 1'b1;
+
+                sel_out = 2'd1;
+                sel_col = 2'd2;
+
+                ld_Val_out = 1'b0;
+
+                en_delayCounter = 1'b0;
+
+				en_B_shapeCounter_D = 1'b0;
+                en_B_shapeCounter_E = 1'b0;
+
+                en_P1_shapeCounter_D = 1'b1;
+                en_P1_shapeCounter_E = 1'b0;
+
+                en_P2_shapeCounter_D = 1'b0;
+                en_P2_shapeCounter_E = 1'b0;
+            end
+            S_DISPLAY_WAIT_BALL:
+            begin
+                plot = 1'b1;
+
+                sel_out = 2'd0;
+                sel_col = 2'd0;
+
+                ld_Val_out = 1'b0;
+ 
+                en_delayCounter = 1'b0;
+
+				en_B_shapeCounter_D = 1'b1;
+                en_B_shapeCounter_E = 1'b0;
+
+                en_P1_shapeCounter_D = 1'b0;
+                en_P1_shapeCounter_E = 1'b0;
+
+                en_P2_shapeCounter_D = 1'b0;
+                en_P2_shapeCounter_E = 1'b0; 
+            end
+            S_DISPLAY_BALL:
+            begin
+                plot = 1'b1;
+
+                sel_out = 2'd0;
+                sel_col = 2'd0;
+
+                ld_Val_out = 1'b0;
+ 
+                en_delayCounter = 1'b0;
+
+				en_B_shapeCounter_D = 1'b1;
+                en_B_shapeCounter_E = 1'b0;
+
+                en_P1_shapeCounter_D = 1'b0;
+                en_P1_shapeCounter_E = 1'b0;
+
+                en_P2_shapeCounter_D = 1'b0;
+                en_P2_shapeCounter_E = 1'b0; 
+            end
+            S_DISPLAY_WAIT_PADDLE2:
+            begin
+                plot = 1'b1;
+
+                sel_out = 2'd2;
+                sel_col = 2'd2;
+
+                ld_Val_out = 1'b0;
+ 
+                en_delayCounter = 1'b0;
+
+				en_B_shapeCounter_D = 1'b0;
+                en_B_shapeCounter_E = 1'b0;
+
+                en_P1_shapeCounter_D = 1'b0;
+                en_P1_shapeCounter_E = 1'b0;
+
+                en_P2_shapeCounter_D = 1'b1;
+                en_P2_shapeCounter_E = 1'b0;
+            end
+            S_DISPLAY_PADDLE2:
+            begin
+                plot = 1'b1;
+
+                sel_out = 2'd2;
+                sel_col = 2'd2;
+
+                ld_Val_out = 1'b0;
+ 
+                en_delayCounter = 1'b0;
+
+				en_B_shapeCounter_D = 1'b0;
+                en_B_shapeCounter_E = 1'b0;
+
+                en_P1_shapeCounter_D = 1'b0;
+                en_P1_shapeCounter_E = 1'b0;
+
+                en_P2_shapeCounter_D = 1'b1;
+                en_P2_shapeCounter_E = 1'b0;
+            end
+            S_DISPLAY_DONE:
+            begin
+                plot = 1'b0;
+
+                sel_out = 2'd0;
+                sel_col = 2'd0;
+
+                ld_Val_out = 1'b0;                
+
+                en_delayCounter = 1'b0;
+
+				en_B_shapeCounter_D = 1'b0;
+                en_B_shapeCounter_E = 1'b0;
+
+                en_P1_shapeCounter_D = 1'b0;
+                en_P1_shapeCounter_E = 1'b0;
+
+                en_P2_shapeCounter_D = 1'b0;
+                en_P2_shapeCounter_E = 1'b0;
             end
             // default: // don't need default since we already made sure all of our outputs were assigned a value at the start of the always block
         endcase //output logic

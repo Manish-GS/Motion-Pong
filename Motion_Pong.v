@@ -84,9 +84,7 @@ module Motion_Pong
     
     // Instantiate the wires between the control and datapath
     // register wires
-    wire ld_bx, ld_by;
-	wire ld_p1x, ld_p1y;
-	wire ld_p2x, ld_p2y;
+    wire ld_Val;
 
     // counter wires
     wire en_B_shapeCounter_D, en_B_shapeCounter_E;
@@ -105,39 +103,31 @@ module Motion_Pong
 	always @(posedge CLOCK_50)
 	begin
 		if(KEY[0] == 1'b0)
-			gameSpeed = 28'd4000000 - 1'b1;
+			gameSpeed <= 28'd3333332 - 1'b1;
 		else if(KEY[1] == 1'b0)
-			gameSpeed <= 28'd2000000 - 1'b1;
+			gameSpeed <= 28'd1666666 - 1'b1;
 		else if(KEY[2] == 1'b0)
 			gameSpeed <= 28'd833333 - 1'b1;
 		else if(KEY[3] == 1'b0)
 			gameSpeed <= 28'd416666 - 1'b1;
-
 	end
 
     // instantiate a control module
     Control control0(
         .clock(CLOCK_50),
         .resetn(resetn),
-        .go(gameSpeed == 28'd0 ? 1'b0 : 1'b1),
+        .go(((~ KEY[0]) | (~ KEY[1]) | (~ KEY[2]) | (~ KEY[3]))),
 
         .fin_B_D(fin_B_D),
 		.fin_B_E(fin_B_E),
 
-        .ld_bx_out(ld_bx),
-        .ld_by_out(ld_by),
-
 		.fin_P1_D(fin_P1_D),
 		.fin_P1_E(fin_P1_E),
-
-        .ld_p1x_out(ld_p1x),
-        .ld_p1y_out(ld_p1y),
 
 		.fin_P2_D(fin_P2_D),
 		.fin_P2_E(fin_P2_E),
 
-        .ld_p2x_out(ld_p2x),
-        .ld_p2y_out(ld_p2y),
+        .ld_Val_out(ld_Val),
 
         .en_B_shapeCounter_D(en_B_shapeCounter_D),
 		.en_B_shapeCounter_E(en_B_shapeCounter_E),
@@ -174,14 +164,7 @@ module Motion_Pong
 		.sel_out(sel_out),
 		.sel_col(sel_col),
 
-        .ld_bx(ld_bx),
-        .ld_by(ld_by),
-
-		.ld_p1x(ld_p1x),
-		.ld_p1y(ld_p1y),
-
-		.ld_p2x(ld_p2x),
-		.ld_p2y(ld_p2y),
+    	.ld_Val(ld_Val),
 
         .en_B_shapeCounter_D(en_B_shapeCounter_D),
 		.en_B_shapeCounter_E(en_B_shapeCounter_E),

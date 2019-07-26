@@ -1,14 +1,14 @@
-Fitter Status : Successful - Wed Jul 24 20:27:36 2019
+Fitter Status : Successful - Fri Jul 26 02:53:39 2019
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : Motion_Pong
 Top-level Entity Name : Motion_Pong
 Family : Cyclone IV E
 Device : EP4CE115F29C7
 Timing Models : Final
-Total logic elements : 2,157 / 114,480 ( 2 % )
-    Total combinational functions : 2,145 / 114,480 ( 2 % )
-    Dedicated logic registers : 373 / 114,480 ( < 1 % )
-Total registers : 373
+Total logic elements : 2,233 / 114,480 ( 2 % )
+    Total combinational functions : 2,216 / 114,480 ( 2 % )
+    Dedicated logic registers : 383 / 114,480 ( < 1 % )
+Total registers : 383
 Total pins : 136 / 529 ( 26 % )
 Total virtual pins : 0
 Total memory bits : 57,600 / 3,981,312 ( 1 % )
