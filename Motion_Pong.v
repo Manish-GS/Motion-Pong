@@ -90,6 +90,8 @@ module Motion_Pong
     wire en_B_shapeCounter_D, en_B_shapeCounter_E;
 	wire en_P1_shapeCounter_D, en_P1_shapeCounter_E;
 	wire en_P2_shapeCounter_D, en_P2_shapeCounter_E;
+	wire en_Score1;
+	wire en_Score2;
 	wire en_delayCounter;
 
     // helper wires
@@ -97,7 +99,10 @@ module Motion_Pong
 	wire fin_P1_D, fin_P1_E;
 	wire fin_P2_D, fin_P2_E;
 	wire fin_Wait;
-	wire [1:0] sel_out, sel_col;
+	wire fin_S1_D;
+	wire fin_S2_D;
+	wire [2:0] sel_out;
+	wire [1:0] sel_col;
 	reg [27:0] gameSpeed;		// Determine the speed of the game, set by the user
 
 	always @(posedge CLOCK_50)
@@ -126,6 +131,9 @@ module Motion_Pong
 
 		.fin_P2_D(fin_P2_D),
 		.fin_P2_E(fin_P2_E),
+		
+		.fin_S1_D(fin_S1_D),
+		.fin_S2_D(fin_S2_D),
 
         .ld_Val_out(ld_Val),
 
@@ -137,6 +145,9 @@ module Motion_Pong
 
 		.en_P2_shapeCounter_D(en_P2_shapeCounter_D),
 		.en_P2_shapeCounter_E(en_P2_shapeCounter_E),
+
+		.en_Score1(en_Score1),
+		.en_Score2(en_Score2),
 
 		.fin_Wait(fin_Wait),
         .en_delayCounter(en_delayCounter),
@@ -166,6 +177,9 @@ module Motion_Pong
 
     	.ld_Val(ld_Val),
 
+		.en_Score1(en_Score1),
+		.en_Score2(en_Score2),
+
         .en_B_shapeCounter_D(en_B_shapeCounter_D),
 		.en_B_shapeCounter_E(en_B_shapeCounter_E),
 
@@ -182,6 +196,9 @@ module Motion_Pong
 		.colour_out(colour),
 
         .fin_Wait(fin_Wait),
+
+		.fin_S1_D(fin_S1_D),
+		.fin_S2_D(fin_S2_D),
 
         .fin_B_D(fin_B_D),
 		.fin_B_E(fin_B_E),

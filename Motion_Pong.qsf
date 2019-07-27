@@ -580,6 +580,7 @@ set_location_assignment PIN_E10 -to EXT_IO[5]
 set_location_assignment PIN_D9 -to EXT_IO[6]
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name MIF_FILE test.mif
 set_global_assignment -name SOURCE_FILE motion_pong.jpg
 set_global_assignment -name VERILOG_FILE "Verilog Modules/stablizier.v"
 set_global_assignment -name VERILOG_FILE "Verilog Modules/UltrasonicSensor.v"
